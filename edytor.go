@@ -6,7 +6,7 @@ import (
 	"github.com/therecipe/qt/widgets"
 )
 
-//struktura edytor, która opisuje co bedzie zaiwerało góówne okno
+/*struktura edytor, która opisuje co bedzie zaiwerało góówne okno*/
 type Edytor struct {
 	widgets.QMainWindow // elementy z "klasy" QMainWindow
 
@@ -41,6 +41,7 @@ func (e *Edytor) setupPlik() {
 	var a = menu.AddAction2(nowyIkona, "Nowy")                                         //dodaje do menu
 	a.SetShortcuts2(gui.QKeySequence__New)                                             //ustala skrót klawiszowy
 	pasek.QWidget.AddAction(a)                                                         //dodaje do paska narzędzi
+	a.ConnectTriggered(func(checked bool) { e.Nowy() })                                //metoda sprawdza czy nacisnięto a i uruchomi metodę Nowy
 	//
 	var otworzIkona = gui.QIcon_FromTheme2("otwórz", gui.NewQIcon5(":/qml/ikony/open.png"))
 	a = menu.AddAction2(otworzIkona, "Otwórz")
