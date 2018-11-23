@@ -54,11 +54,13 @@ func (e *Edytor) setupPlik() {
 	a = menu.AddAction2(zapiszIkona, "Zapisz")
 	a.SetShortcuts2(gui.QKeySequence__Save)
 	pasek.QWidget.AddAction(a)
+	a.ConnectTriggered(func(checked bool) { e.Zapisz() })
 	//
 	var drukujIkona = gui.QIcon_FromTheme2("drukuj", gui.NewQIcon5(":/qml/ikony/print.png"))
 	a = menu.AddAction2(drukujIkona, "Drukuj")
 	a.SetShortcuts2(gui.QKeySequence__Print)
 	pasek.QWidget.AddAction(a)
+	a.ConnectTriggered(func(checked bool) { e.Drukuj() })
 	//
 	var wyjscieIkona = gui.QIcon_FromTheme2("wyjście", gui.NewQIcon5(":/qml/ikony/close.png"))
 	a = menu.AddAction2(wyjscieIkona, "Wyjście")
